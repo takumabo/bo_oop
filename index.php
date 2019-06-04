@@ -6,19 +6,25 @@
 $kid = new Kid();
 
 //個別に出力する
-// $kid->setName('');
-// $kid->setSex('');
+$kid->setName('武田鉄矢');
+$kid->setSex('girl');
+// 問２
+$kid->setAge(6);
 
 
 class  Kid{
     //プロパティ
     private $name;
     private $sex;
+    //問２
+    private $age;
 
     // 初期値設定(コンストラクタ)
     function __construct(){
         $this->name = 'Seed';
         $this->sex = 'boy';
+        //問２
+        $this->age = 10;
     }
 
 
@@ -38,18 +44,30 @@ class  Kid{
         return $this->sex;
     }
 
+    // 問２
+    public function setAge($ccc){
+        $this->age = $ccc;
+    }
+    public function getAge(){
+        return $this->age;
+    }
 
-    //性別に応じて出力を変えるメソッド
+
+    // 性別に応じて出力を変えるメソッド
+    // 問２　12歳以上なら「○○君／○○さん」と出力
     public function showName(){
-        if($this->sex == 'boy'){
-            return $this->name .' くん';
-        } elseif($this->sex == 'girl') {
-            return $this->name . ' ちゃん';
+        if($this->sex == 'boy' && $this->age >= 12){
+            return $this->name .' 君';
+        } elseif($this->sex == 'girl' && $this->age >= 12) {
+            return $this->name . ' さん';
+        } elseif($this->sex == 'boy' && $this->age <= 11) {
+            return $this->name . ' くん';
+        } elseif($this->sex == 'girl' && $this->age <= 11 ){
+            return $this->name .' ちゃん';
         } else {
-            return $this->name .'不明';
+            return $this->name .' 不明';
         }
     }
 }
 
-//最終出力部分
 echo $kid->showName();
