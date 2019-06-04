@@ -2,6 +2,7 @@
 
 //演習問題1
 
+
 $kid = new Kid();
 
 $kid->setShowName();
